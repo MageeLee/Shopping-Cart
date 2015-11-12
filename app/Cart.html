@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="cart">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Carts</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="angular-1.3.0.js"></script>
+    <script type="text/javascript" src="Cart.js"></script>
+</head>
+
+<body style="padding: 10px;" ng-controller="CartController">
+        <!-- <div class="input-group col-md-8">
+            <input ng-model="goods" type="text" class="form-control">
+            <span class="input-group-btn">
+			<button class="btn-default" ng-click="add()">添加</button>
+		</span>
+        </div> -->
+        <div class="col-md-8">
+            <h4 ng-hide="goods.num==0">购物车列表：</h4>
+            <ul class="list-group col-md-10">
+                <li ng-if="items[$index].quantity>0" ng-repeat="item in items" class="list-group-item col-md-11">
+                    <br>
+                    <span class="col-md-2">{{item.name}}</span>
+                    <input class="col-md-1" ng-click="add($index)" type = "button" value = "+"/>
+                    <input class="col-md-1" ng-model='items[$index].quantity'>
+                    <input class="col-md-1" ng-click="sub($index)" type = "button" value = "-"/>
+                    <span class="col-md-2">{{item.price | currency}}</span>
+                    <span class="col-md-2" ng-model='items[$index].totalPrice'>{{item.price * items[$index].quantity | currency}}</span>
+                    <button class="col-md-2" ng-click="remove($index)">Remove</button>
+                   <!--  <span>{{item.totalPrice}}</span> -->
+                </li>
+                <li ng-hide="goods.num==0" class="list-group-item col-md-11">
+                <span class="col-md-8">总价：{{goods.total|currency:"￥"}}</span>
+                    <button class="col-md-offset-1 col-md-2" onclick="alert('想要剁手了么！！')" >购买</button>
+                </li>
+               <!--  <button class="col-md-2" ng-click="getForm()">GetForm</button> -->
+            </ul>
+        </div>
+</body>
+
+</html>
